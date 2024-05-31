@@ -1,0 +1,17 @@
+@use "sass:math";
+
+@function fibonacci($n) {
+  $sequence: 0 1 1 2 3;
+  @for $_ from 1 through $n {
+    $new: nth($sequence, length($sequence)) + nth($sequence, length($sequence) - 1);
+    $sequence: append($sequence, $new);
+  }
+  @return nth($sequence, length($sequence));
+}
+
+
+@for $i from 1 through 9 {
+    .heading-#{$i}{
+        font-size: math.div(fibonacci($i), $base-font-size) * 1rem
+    }
+}
