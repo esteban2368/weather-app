@@ -1,0 +1,39 @@
+@use "sass:math";
+@use "sass:color";
+
+// Variants colors
+@mixin button-variant-color {
+    @each $color, $value in $colors {
+        &.button-#{$color} {
+            @if $color == 'lila' or $color == 'yellow' {
+                color: $primary;
+            } @else {
+                color: $lila;
+            }
+            background-color: $value;
+            &:hover{
+                background-color: color.scale($value, $lightness: -20%);
+            }
+        }
+    }
+}
+
+@mixin button-variant-shape{
+    
+}
+
+@mixin button($color: transparent){
+    font-size: math.div($base-font-size, $base-font-size) * 1rem;
+    font-weight: 500;
+    padding: $base-padding $base-padding * 1.33;
+    background-color: $color;
+    box-shadow: 0 4px 4px 0 color.scale($black, $alpha: 25%);
+    &:hover{
+        cursor: pointer; 
+    }
+    @include button-variant-color;
+}
+
+.button{
+    @include button
+}

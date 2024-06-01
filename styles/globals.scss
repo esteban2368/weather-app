@@ -1,3 +1,23 @@
+//Normalize rules
+@import '~normalize.css/normalize';
 //variables
 @import './variables';
 @import './font-size';
+@import './colors';
+@import './breakpoints';
+@import './grid';
+@import './utilities.scss';
+// Components
+@import './components/buttons';
+
+//Custom rule normalize
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $primary;
+}

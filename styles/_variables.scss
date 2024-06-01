@@ -1,8 +1,10 @@
 //main colors
+$black: #000000;
 $primary:#100E1D;
 $secundary: #1E213A;
 $purple: #3C47E9;
 $yellow: #FFEC65;
+$gray: #6E707A;
 $lila: #E7E7EB;
 
 $colors: (
@@ -10,12 +12,34 @@ $colors: (
     'secundary': $secundary,
     'purple': $purple,
     'yellow': $yellow,
+    'gray': $gray,
     'lila': $lila
 );
+
+//rounded
+$rounded : (
+    "round": .25rem,
+    "round-md": .375rem,
+    "round-lg": .5rem,
+    "round-full": 9999px
+);
+
+//spacing
+
+$base-padding: .75rem;
+$base-margin: .75rem;
+
+//rounded
+
+$base-rounded: .25rem;
 
 // font sizes
 
 $base-font-size: 16;
+
+// Container size
+
+$container-width: 704px
 
 
 
