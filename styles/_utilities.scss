@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:map";
 
 $utilities : (
     "padding": (
@@ -48,14 +49,48 @@ $utilities : (
             "2": math.div($base-padding, 3),
             "3": math.div($base-padding, 2),
             "4": $base-padding,
-            "5": $base-padding + math.div($base-padding, 4),
-            "6": $base-padding + math.div($base-padding, 3),
-            "7": $base-padding + math.div($base-padding, 2),
+            "5": $base-padding + math.div($base-padding, 2),
+            "6": $base-padding * 2,
+            "7": $base-padding * 3,
+            "8": $base-padding * 4,
+            "9": $base-padding * 5,
+            "10": $base-padding * 6
         )
     ),
     "padding-top": (
         "prefix": "padding-t",
         "values": (
+            "0": 0,
+            "1": math.div($base-padding, 4),
+            "2": math.div($base-padding, 3),
+            "3": math.div($base-padding, 2),
+            "4": $base-padding,
+            "5": $base-padding + math.div($base-padding, 2),
+            "6": $base-padding * 2,
+            "7": $base-padding * 3,
+            "8": $base-padding * 4,
+            "9": $base-padding * 5,
+            "10": $base-padding * 6
+        )
+    ),
+    "margin": (
+        "prefix": "margin",
+        "values": (
+            "auto": auto,
+            "0": 0,
+            "1": math.div($base-padding, 4),
+            "2": math.div($base-padding, 3),
+            "3": math.div($base-padding, 2),
+            "4": $base-padding,
+            "5": $base-padding + math.div($base-padding, 2),
+            "6": $base-padding * 2,
+            "7": $base-padding * 3,
+        )
+    ),
+    "margin-left": (
+        "prefix": "margin-l",
+        "values": (
+            "auto": auto,
             "0": 0,
             "1": math.div($base-padding, 4),
             "2": math.div($base-padding, 3),
@@ -74,7 +109,112 @@ $utilities : (
             "md": $base-rounded + math.div($base-rounded, 2),
             "lg": $base-rounded * 2,
             "xl": $base-rounded * 3,
-            "full": 9999px
+            "full": 50%
         )
-    )
-)
+    ),
+    "position": (
+        "prefix": "p",
+        "values": (
+            "relative": relative,
+            "absolute": absolute,
+            "fixed": fixed,
+            "stiky": stiky
+        )
+    ),
+    "object-fit": (
+        "prefix": "object",
+        "values": (
+            "fill": fill,
+            "cover": cover,
+            "contain": contain
+        )
+    ),
+    "overflow": (
+        "prefix": "overflow",
+        "values": (
+            "h": hidden,
+            "s": scroll
+        )
+    ),
+    "width": (
+        "prefix": "w",
+        "values": (
+            "full": 100%,
+            "50": math.div(100%, 2),
+            "30": math.div(100%, 3),
+            "screen": 100vw,
+        )
+    ),
+    "height": (
+        "prefix": "h",
+        "values": (
+            "full": 100%,
+            "50": math.div(100%, 2),
+            "30": math.div(100%, 3),
+            "screen": 100vh,
+        )
+    ),
+    "z-index": (
+        "prefix": "z",
+        "values": (
+            "-1": -1,
+            "1": 1,
+            "10": 10,
+            "20": 20,
+            "30": 30,
+        )
+    ),
+    "font-weight": (
+        "prefix": "fw",
+        "values": (
+            "nor": 400,
+            "med": 500,
+            "semimed": 600,
+            "bold": 700,
+            "bolder": 800,
+        )
+    ),
+    "opacity": (
+        "prefix": "o",
+        "values": (
+            "5": .05,
+            "10": .1,
+            "20": .2,
+            "30": .3,
+            "40": .4,
+            "50": .5,
+            "60": .6,
+            "70": .7,
+            "80": .8,
+            "90": .9,
+            "100": 1
+        )
+    ),
+);
+
+@each $property, $map in $utilities {
+    $prefix: map-get($map, "prefix" );
+    $values: map-get($map, "values");
+
+    @each $key, $value in $values {
+        @if ($key == "default") {
+            .#{$prefix}{
+                @if $activeImp{
+                    #{$property}: $value !important
+                }@else {
+                    #{$property}: $value;
+                }
+            }
+        }@else {
+            @if $activeImp{
+                .#{$prefix}-#{$key} {
+                    #{$property}: $value !important
+                }
+            }@else{
+                .#{$prefix}-#{$key} {
+                    #{$property}: $value
+                }
+            }
+        }
+    }
+}

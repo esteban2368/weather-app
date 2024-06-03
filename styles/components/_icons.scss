@@ -1,0 +1,10 @@
+//Size of icons
+@each $icons, $icon in $iconSize {
+    $withoutUnit: extract-number($icon);
+    span{
+        &.md-#{$icons} {
+            font-size: $icon;
+            font-variation-settings: 'OPSZ' $withoutUnit;
+        }
+    }
+}

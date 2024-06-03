@@ -1,0 +1,108 @@
+@use "sass:map";
+// Utility display property
+$display: (
+    "display": (
+        "prefix": "d",
+        "values" : (
+            "hidden": none,
+            "block" : block,
+            "flex" :  flex
+        )
+    ),
+    "justify-content": (
+        "prefix": "justify",
+        "values": (
+            "c": center,
+            "e": flex-end,
+            "s": flex-start,
+            "sb": space-between
+        )
+    ),
+    "align-items": (
+        "prefix": "items",
+        "values": (
+            "c": center,
+            "e": flex-end,
+            "s": flex-start,
+            "sb": space-between
+        )
+    ),
+    "flex-direction": (
+        "prefix": "flex",
+        "values": (
+            "col": column,
+            "row": row
+        )
+    )
+);
+
+@include xs {
+    @each $property, $map in $display {
+        $prefix: map-get($map, "prefix");
+        $values: map-get($map, "values");
+    
+        @each $k, $v in $values{
+            .#{$prefix}-#{$k}{
+                #{$property}: $v
+            }
+        }
+    }
+}
+
+@include sm {
+    @each $property, $map in $display {
+        $prefix: map-get($map, "prefix");
+        $values: map-get($map, "values");
+    
+        @each $k, $v in $values{
+            .#{$prefix}-sm-#{$k}{
+                #{$property}: $v
+            }
+        }
+    }
+}
+
+@include md {
+    @each $property, $map in $display {
+        $prefix: map-get($map, "prefix");
+        $values: map-get($map, "values");
+    
+        @each $k, $v in $values{
+            .#{$prefix}-md-#{$k}{
+                #{$property}: $v
+            }
+        }
+    }
+}
+
+@include lg {
+    @each $property, $map in $display {
+        $prefix: map-get($map, "prefix");
+        $values: map-get($map, "values");
+    
+        @each $k, $v in $values{
+            .#{$prefix}-lg-#{$k}{
+                #{$property}: $v
+            }
+        }
+    }
+}
+
+@include xl {
+    @each $property, $map in $display {
+        $prefix: map-get($map, "prefix");
+        $values: map-get($map, "values");
+    
+        @each $k, $v in $values{
+            .#{$prefix}-xl-#{$k}{
+                #{$property}: $v
+            }
+        }
+    }
+}
+
+
+
+
+
+

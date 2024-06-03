@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { raleway } from "@/fonts"
 import "@/styles/globals.scss"
+import "material-symbols"
 
 export const metadata: Metadata = {
   title: "Weather app",

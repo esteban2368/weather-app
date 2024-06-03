@@ -7,8 +7,10 @@
 @import './breakpoints';
 @import './grid';
 @import './utilities.scss';
+@import './display';
 // Components
 @import './components/buttons';
+@import './components/icons';
 
 //Custom rule normalize
 *{
@@ -20,4 +22,14 @@
 
 body{
     background-color: $primary;
+    font-weight: 500;
+}
+
+.center{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.text-center{
+    text-align: center;
 }
