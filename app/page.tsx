@@ -39,15 +39,21 @@ export default function Home() {
             />
           </div>
           <div className="text-center">
-            <div className="color-lila">
+            <div className="color-lila margin-b-6">
               <span className="heading-8 ">15</span>
               <span className="heading-6">&#xb0;c</span>
             </div>
-            <span className="heading-5 color-gray-light fw-semimed">Shower</span>
-            <div className="color-gray heading-4">
+            <span className="d-block heading-5 color-gray-light fw-semimed margin-b-8">Shower</span>
+            <div className="color-gray heading-4 margin-b-7">
               Today 
               <span className="padding-l-5 padding-r-5">•</span> 
               Fri,5 Jun
+            </div>
+            <div className="d-flex justify-c items-c fw-semimed color-gray gap-1">
+              <span className="material-symbols-outlined md-2 fill">
+                location_on
+              </span>
+              Helsinki
             </div>
           </div>
         </section>

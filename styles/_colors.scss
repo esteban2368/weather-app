@@ -4,7 +4,7 @@
     .color-#{$color}{
         color: $value;
     }
-    @if $color != 'white' or $color != 'gray-light' {
+    @if $color != 'white' and $color != 'gray-light' {
         .bg-#{$color} {
             background-color: $value;
         }
