@@ -1,0 +1,20 @@
+$lila: #E7E7EB; 
+$grayish-lila: #616475;
+
+.inputSearch{
+    color: $grayish-lila;
+    border: solid 1px $lila;
+    input{
+        color: $grayish-lila;
+        &:focus{
+            outline: 0;
+        }
+        &::placeholder{
+            font-weight: 500;
+            opacity: 1;
+        }
+    }
+    &:focus-within{
+        outline: solid 1px;
+    }
+}

@@ -1,16 +1,16 @@
 //Normalize rules
 @import '~normalize.css/normalize';
-//variables
-@import './variables';
-@import './font-size';
-@import './colors';
-@import './breakpoints';
-@import './grid';
-@import './utilities.scss';
-@import './display';
+//Using framework easyCss create it using SASS
+@import './easyCSS/variables';
+@import './easyCSS/font-size';
+@import './easyCSS/colors';
+@import './easyCSS/breakpoints';
+@import './easyCSS/grid';
+@import './easyCSS/utilities.scss';
+@import './easyCSS/display';
 // Components
-@import './components/buttons';
-@import './components/icons';
+@import './easyCSS/components/buttons';
+@import './easyCSS/components/icons';
 
 //Custom rule normalize
 *{
@@ -18,6 +18,9 @@
     margin: 0;
     border: 0;
     box-sizing: border-box;
+}
+a{
+    text-decoration: none;
 }
 
 body{

@@ -6,6 +6,7 @@ $display: (
         "values" : (
             "hidden": none,
             "block" : block,
+            "inline-b": inline-block,
             "flex" :  flex
         )
     ),
@@ -32,6 +33,13 @@ $display: (
         "values": (
             "col": column,
             "row": row
+        )
+    ),
+    "flex-wrap": (
+        "prefix": "flex",
+        "values": (
+            "wrap": wrap,
+            "nowrap": nowrap
         )
     )
 );

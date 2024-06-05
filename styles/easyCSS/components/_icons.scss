@@ -6,8 +6,10 @@
             font-size: $icon;
             font-variation-settings: 'OPSZ' $withoutUnit;
         }
-        &.fill{
-            font-variation-settings: 'FILL' 1;
-        }
+    }
+}
+span{
+    &.fill{
+        font-variation-settings: 'FILL' 1;
     }
 }

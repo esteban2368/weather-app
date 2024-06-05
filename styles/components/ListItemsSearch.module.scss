@@ -1,0 +1,19 @@
+$lila: #E7E7EB; 
+$grayish-lila: #616475;
+
+.list{
+    li{
+        padding: 1.5rem .75rem;
+        border: solid 1px transparent;
+        cursor: pointer;
+        &:hover{
+            border: solid 1px $grayish-lila;
+            span{
+                opacity: 1;
+            }
+        }
+        span{
+            opacity: 0;
+        }
+    }
+}

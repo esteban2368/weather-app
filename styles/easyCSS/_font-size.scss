@@ -17,3 +17,6 @@
         font-size: math.div(fibonacci($i), $base-font-size) * 1rem
     }
 }
+.heading-base{
+  font-size: math.div($base-font-size, $base-font-size) * 1rem;
+}
