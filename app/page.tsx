@@ -12,7 +12,7 @@ export default function Home() {
           <section className="column-12 bg-secundary">
             <div className="row padding-l-4 padding-r-4 padding-t-5">
               <div className="column-10">
-                <Link href="/search-places" className="button button-gray d-inline-b">
+                <Link href="/search-places" scroll={false} className="button button-gray d-inline-b">
                   Search for places
                 </Link>
               </div>
@@ -60,7 +60,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </section>
+          </section>  
         </div>
     </main>
   );

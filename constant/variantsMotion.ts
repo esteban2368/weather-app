@@ -35,3 +35,11 @@ export const variantListItem: Variants = {
         transition: { duration: 0.2 } 
     }
 } 
+
+export const variantHoverIcon: Variants = {
+    initial:{opacity:0, x:-20},
+    hover: {
+        opacity: 1,
+        x: 0
+    }
+}

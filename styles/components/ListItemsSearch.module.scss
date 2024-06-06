@@ -8,12 +8,7 @@ $grayish-lila: #616475;
         cursor: pointer;
         &:hover{
             border: solid 1px $grayish-lila;
-            span{
-                opacity: 1;
-            }
         }
-        span{
-            opacity: 0;
-        }
+        
     }
 }
