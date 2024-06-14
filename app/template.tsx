@@ -1,5 +1,5 @@
 'use client'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { variantsPage } from '@/constant/variantsMotion'
 
 interface props {
@@ -8,12 +8,15 @@ interface props {
 
 const Template = ({children} : props) =>{
     return (
-        <motion.div 
-            initial={variantsPage.hidden} 
-            animate={variantsPage.visible}
-        >
-            {children}
-        </motion.div>
+        <AnimatePresence>
+            <motion.div 
+                variants={variantsPage}
+                initial="initial"
+                animate="visible"
+            >
+                {children}
+            </motion.div>
+        </AnimatePresence>
     )
 }
 export default Template

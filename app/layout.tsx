@@ -3,6 +3,8 @@ import { raleway } from "@/fonts"
 import "@/styles/globals.scss"
 import "material-symbols"
 
+import Providers from "@/components/Providers"
+
 export const metadata: Metadata = {
   title: "Weather app",
   description: "This app for forecast weather",
@@ -18,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className}>
-        {children}
-        {modal}  
+        <Providers>
+          {modal}  
+          {children}
+        </Providers>
       </body>
     </html>
   );

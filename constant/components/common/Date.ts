@@ -1,0 +1,1 @@
+export const formatString = "iii',' d LLL"

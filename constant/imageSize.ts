@@ -1,4 +1,4 @@
 export const ImageForeCast = {
-    width: 56.44,
-    height: 62
+    width: 80,
+    height: 80
 }

@@ -1,8 +1,39 @@
 import { Variants } from "framer-motion"
+import { exit } from "process"
 
 export const variantsPage = {
-    hidden: {y: 20, opacity: 0},
-    visible: {y:0, opacity: 1}
+    initial: {
+        y: 20,
+        opacity: 0
+    },
+    visible: {
+        y:0,
+        opacity: 1
+    },
+    exit: {
+        x: 100,
+        opacity: 0
+    }
+}
+export const variantModal = {
+    initial: {
+        x:-100, 
+        opacity: 0, 
+        },
+    visible: {
+        x:0, 
+        opacity: 1,
+        transition: {
+            dutation: .5
+        }
+    },
+    exit: {
+        x: -100, 
+        opacity: 0,
+        transition: {
+            duration: .3
+        }
+    }
 }
 
 export const variantList: Variants = {

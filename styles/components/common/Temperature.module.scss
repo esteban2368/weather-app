@@ -1,0 +1,19 @@
+$gray-light: #A09FB1;
+
+.level-1 {
+    span:nth-child(1){
+        font-size: 9rem;
+    }
+    span:nth-child(2){
+        font-size: 3rem;
+        color: $gray-light;
+    }
+}
+.level-2 {
+    font-size: 1rem; 
+}
+    
+.level-3 {
+    font-size: 1rem;
+    color: $gray-light;
+}

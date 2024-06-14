@@ -223,6 +223,15 @@ $utilities : (
             "90": .9,
             "100": 1
         )
+    ),
+    "pointer-events": (
+        "prefix": "pointer",
+        "values": (
+            "auto": auto,
+            "fill": fill,
+            "none": none,
+            "painted": painted
+        )
     )
 );
 

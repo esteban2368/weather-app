@@ -1,32 +1,22 @@
 import Image from "next/image";
 import ImageCloud from "@/components/ImageCloud"
 import ForeCastListCard from "@/components/ForeCastsListCard"
+import CurrentWeather from "@/ui/CurrentWeather"
+import Switch from "@/components/Switch"
+
+import { buttons } from "@/constant/components/Switch";
 
 import styles from "@/styles/HomePage.module.scss"
-import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className={`${styles.main} container`}>
         <div className="row">
           <section className="column-12 bg-secundary">
-            <div className="row padding-l-4 padding-r-4 padding-t-5">
-              <div className="column-10">
-                <Link href="/search-places" scroll={false} className="button button-gray d-inline-b">
-                  Search for places
-                </Link>
-              </div>
-              <div className="column-2">
-                <button role="button" className={`${styles.buttonCircle} button button-gray rounded-full padding-0 margin-l-auto d-flex items-c justify-c`}>
-                  <span className="material-symbols-outlined md-2">
-                    my_location
-                  </span>
-                </button>
-              </div>
-            </div>
-            <ImageCloud/>
+            <CurrentWeather/>
           </section>
           <section className="column-12 d-flex flex-col gap-7 padding-6 padding-t-8 padding-b-8">
+            <Switch buttons={buttons}/>
             <ForeCastListCard/>
             <div className="d-flex flex-col gap-5">
               <h2 className="color-lila">Today's Hightlights</h2>
