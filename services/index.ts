@@ -1,4 +1,4 @@
-import { typeQueryParamsSearhByName } from "@/types/services"
+import { typeQueryParamsSearhByName, WeatherResponse } from "@/types/services"
 import { DEFAULT_UNIT_TEMP as UNIT } from "@/constant/services"
 
 const headers = new Headers()
@@ -14,7 +14,7 @@ export const searchCoorByCity = async (queryParams: typeQueryParamsSearhByName) 
     return request.json()
 }
 
-export const currentWeather = async (defaultLocation: string) =>{
+export const currentWeather = async (defaultLocation: string) : Promise<WeatherResponse> =>{
     const request = await fetch(
         `${process.env.URL_WEATHER_API}${process.env.URL_CURRENT_WEATHER_ENDPOINT}?q=${defaultLocation}&units=${UNIT}&appid=${process.env.KEY_WEATHER_API}`,
         {

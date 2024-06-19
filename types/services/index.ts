@@ -16,7 +16,12 @@ export interface typeLocation{
 
 export interface Main{
     temp: number;
-    humidity: number
+    humidity: number;
+    pressure: number
+}
+export interface Wind{
+    speed: number;
+    deg: number
 }
 
 export interface Sys{
@@ -35,6 +40,7 @@ export interface WeatherResponse {
     dt: number;
     name: string;
     main: Main;
+    wind: Wind;
     weather: Weather[];
     sys: Sys;
 }

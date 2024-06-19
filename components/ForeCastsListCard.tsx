@@ -14,8 +14,8 @@ const ForeCastListCard = () => {
                     height={ImageForeCast.height}
                 />
                 <div className="d-flex gap-2">
-                    <Temperature variant="level-2" value={16.25}/>
-                    <Temperature variant="level-3" value={11}/>
+                    <Temperature variant="level-2" value={44}/>
+                    <Temperature variant="level-3" value={74}/>
                 </div>
             </div>
             <div className="bg-secundary padding-5 color-lila d-flex flex-col items-c">
