@@ -1,5 +1,5 @@
 "use client"
-import { animate } from "framer-motion"
+import { useAnimate } from "framer-motion"
 
 const CounterAnimation = () => {
     return (

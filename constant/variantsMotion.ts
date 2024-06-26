@@ -1,5 +1,4 @@
 import { Variants } from "framer-motion"
-import { exit } from "process"
 
 export const variantsPage = {
     initial: {

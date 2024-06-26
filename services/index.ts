@@ -23,3 +23,13 @@ export const currentWeather = async (defaultLocation: string) : Promise<WeatherR
     )
     return request.json()
 }
+
+export const forecastDaily = async (defaultLocation: string, timesteps:string) => {
+    const request = await fetch(`${process.env.URL_WEATHER_FORECAST_URL}${process.env.URL_FORECAST_ENDPOINT}?location=${defaultLocation}?timestemps=${timesteps}?units=${UNIT}?apikey=${process.env.KEY_WEATHER_FORECAST_API}`,
+        {
+            headers: headers
+        }
+    )
+
+    return request.json()
+}
