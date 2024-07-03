@@ -1,59 +1,37 @@
 import Image from "next/image"
 import Temperature from "./common/Temperature"
+import Date from "./common/Date"
+import uuid4 from "uuid4"
 import { ImageForeCast } from '@/constant/imageSize'
-const ForeCastListCard = () => {
+import { iconsForeCast } from "@/constant/components/ForeCastListCard"
+import { DEFAULT_LOCATION as location } from "@/constant/services"
+import { dailyForecast } from "@/types/services"
+
+import { forecastDaily } from "@/services"
+
+const ForeCastListCard = async () => {
+    const forecastData = await forecastDaily(location, "daily")
+    const dataForeCast = forecastData?.timelines?.daily
     return (
         <div className="d-flex justify-c flex-wrap gap-4">
-            <div className="bg-secundary padding-5 color-lila d-flex flex-col items-c">
-                <h3 className="heading-base fw-med">Tomorrow</h3>
-                <Image
-                    className="margin-b-5"
-                    alt="Image forecast tomorrow"
-                    src="/09d.svg"
-                    width={ImageForeCast.width}
-                    height={ImageForeCast.height}
-                />
-                <div className="d-flex gap-2">
-                    <Temperature variant="level-2" value={44}/>
-                    <Temperature variant="level-3" value={74}/>
+            {dataForeCast?.slice(1, dataForeCast.length).map((daily: dailyForecast) => {
+                return <div className="bg-secundary padding-5 color-lila d-flex flex-col items-c" key={uuid4()}>
+                    <h3 className="heading-base fw-med">
+                        <Date time={daily.time}/>
+                    </h3>
+                    <Image
+                        className="margin-b-5"
+                        alt="Image forecast tomorrow"
+                        src={`${iconsForeCast[daily.values.weatherCodeMax]}.svg`}
+                        width={ImageForeCast.width}
+                        height={ImageForeCast.height}
+                    />
+                    <div className="d-flex gap-2">
+                        <Temperature variant="level-2" value={daily.values.temperatureApparentMin}/>
+                        <Temperature variant="level-3" value={daily.values.temperatureApparentMax}/>
+                    </div>
                 </div>
-            </div>
-            <div className="bg-secundary padding-5 color-lila d-flex flex-col items-c">
-                <h3 className="heading-base fw-med">Tomorrow</h3>
-                <Image
-                    className="margin-b-5"
-                    alt="Image forecast tomorrow"
-                    src="/09d.svg"
-                    width={ImageForeCast.width}
-                    height={ImageForeCast.height}
-                />
-                <div className="d-flex gap-2">
-                    <span>
-                        16 <span>&#xb0;C</span>
-                    </span>
-                    <span className="color-gray-light">
-                        11 <span>&#xb0;C</span>
-                    </span>
-                </div>
-            </div>
-            <div className="bg-secundary padding-5 color-lila d-flex flex-col items-c">
-                <h3 className="heading-base fw-med">Tomorrow</h3>
-                <Image
-                    className="margin-b-5"
-                    alt="Image forecast tomorrow"
-                    src="/09d.svg"
-                    width={ImageForeCast.width}
-                    height={ImageForeCast.height}
-                />
-                <div className="d-flex gap-2">
-                    <span>
-                        16 <span>&#xb0;C</span>
-                    </span>
-                    <span className="color-gray-light">
-                        11 <span>&#xb0;C</span>
-                    </span>
-                </div>
-            </div>
+            })}
         </div>
     )
 }

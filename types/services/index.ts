@@ -44,3 +44,23 @@ export interface WeatherResponse {
     weather: Weather[];
     sys: Sys;
 }
+
+//Types for forecast request API
+interface dailyValues {
+    temperatureApparentMax: number;
+    temperatureApparentMin: number;
+    weatherCodeMax: number
+}
+export interface dailyForecast {
+    time: Date;
+    values: dailyValues;
+}
+
+interface timelinesForecast {
+    daily: dailyForecast[]
+}
+
+export interface Forecast {
+    timelines: timelinesForecast
+}
+

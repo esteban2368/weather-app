@@ -69,7 +69,7 @@ const ImageCloud = ({info}:
             <div className="color-gray heading-4 margin-b-7">
                 Today 
                 <span className="padding-l-5 padding-r-5">•</span> 
-                <Date unixTime={info.dt}/>
+                <Date time={info.dt}/>
             </div>
             <div className="d-flex justify-c items-c fw-semimed color-gray gap-1">
                 <span className="material-symbols-outlined md-2 fill">
