@@ -14,4 +14,5 @@ const metricReducer = (metric : {value: metricType, symbol: string}, action: met
     }
 }  
 
+
 export default metricReducer

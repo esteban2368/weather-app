@@ -28,7 +28,7 @@ const Switch =  ({buttons}: props) => {
             })
     }
     return (
-        <div className="d-flex justify-e gap-2">
+        <div className="d-flex justify-c justify-sm-e  gap-2 ">
             {buttons.map((button: button, index) =>
                 <button 
                     key={index} 
