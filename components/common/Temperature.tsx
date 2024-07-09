@@ -1,5 +1,5 @@
 "use client"
-import { useMetricContext } from "@/providers/MetricProvider"
+import { useRootContext } from "@/providers/RootProvider"
 import { convertMetric } from "@/utils"
 import style from "@/styles/components/common/Temperature.module.scss"
 
@@ -11,13 +11,13 @@ const Temperature = ({
     variant = "level-1",
     value
 }: props) => {
-    const metric = useMetricContext()
+    const globalState = useRootContext()
     const styleVariant = style[variant]
 
     return (
         <div className={styleVariant}>
-            <span>{convertMetric(metric.value, value )}</span>
-            <span>{metric.symbol}</span>  
+            <span>{convertMetric(globalState.metric.value, value )}</span>
+            <span>{globalState.metric.symbol}</span>  
         </div>
     )
 }

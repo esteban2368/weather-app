@@ -1,26 +1,26 @@
 "use client"
 import { useReducer } from "react"
-import MetricDispatchProvider from "@/providers/MetricDispatchProvider"
-import MetricProvider from "@/providers/MetricProvider"
+import RootDispatchProvider from "@/providers/RootDispatchProvider"
+import RootProvider from "@/providers/RootProvider"
 
-import metricReducer from "@/reducers/metricReducer"
+import rootReducer from "@/reducers/rootReducer"
 import { metricType } from "@/types/reducers/metricReducer"
-import { DEFAULT_METRIC as dMetric } from "@/constant/components/Switch"
+import { initialRootState } from "@/constant/reducers/rootReducers"
 
 interface props {
     children: React.ReactNode
 }
 
 const Providers = ({children}: props) => {
-    const [metric, dispatch] =  useReducer(metricReducer, dMetric)
-
+    const [state, dispatch] =  useReducer(rootReducer, initialRootState)
+    console.log(state)
 
     return (
-        <MetricProvider metric={metric}>
-            <MetricDispatchProvider dispatchValue={dispatch}>
+        <RootProvider metric={state}>
+            <RootDispatchProvider dispatchValue={dispatch}>
                 {children}
-            </MetricDispatchProvider>
-        </MetricProvider>
+            </RootDispatchProvider>
+        </RootProvider>
     )
 }
 

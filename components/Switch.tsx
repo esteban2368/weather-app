@@ -1,6 +1,6 @@
 "use client"
-import { useMetricDispatchContext } from "@/providers/MetricDispatchProvider"
-import { useMetricContext } from "@/providers/MetricProvider"
+import { useRootDispatchContext } from "@/providers/RootDispatchProvider"
+import { useRootContext } from "@/providers/RootProvider"
 
 import { metricType } from "@/types/reducers/metricReducer"
 
@@ -16,15 +16,16 @@ interface props{
 }
 
 const Switch =  ({buttons}: props) => {
-    const dispatch = useMetricDispatchContext()
-    const metric = useMetricContext()
+    const dispatch = useRootDispatchContext() 
+    const globalState = useRootContext()
 
     const handleChangeMetric = (metric: metricType, symbol: string) => {
         dispatch && 
             dispatch({
                 type: "change_metric",
                 value: metric,
-                symbol: symbol
+                symbol: symbol,
+                reducer: 'metric'
             })
     }
     return (
@@ -34,7 +35,7 @@ const Switch =  ({buttons}: props) => {
                     key={index} 
                     role="button" 
                     onClick={() => handleChangeMetric(button.value, button.text)}
-                    className={`${style.button} button button-grayish-purple ${metric.value === button.value && 'button-lila pointer-none'} rounded-full fw-bold`}
+                    className={`${style.button} button button-grayish-purple ${globalState.metric.value === button.value && 'button-lila pointer-none'} rounded-full fw-bold`}
                 >
                     {button.text}
                 </button>

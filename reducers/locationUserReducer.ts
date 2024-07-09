@@ -3,7 +3,7 @@ import { locationActionType} from "@/types/reducers/locationUserReducer"
 
 const locationUserReducer = (location: locationUserType, action : locationActionType ) => {
     switch (action.type) {
-        case "get_location_user": {
+        case 'get_location_user': {
             return action.location
         }
         default: {

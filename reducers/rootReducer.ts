@@ -1,12 +1,21 @@
 import metricReducer from "./metricReducer"
 import locationUserReducer from "./locationUserReducer"
 
-import { rootReducerType, rootReducerInitialState } from "@/types/reducers/rootReducer"
+import { rootReducerType, rootReducerInitialState, rootActionType } from "@/types/reducers/rootReducer"
+import { metricActionType } from "@/types/reducers/metricReducer"
+import { locationActionType } from "@/types/reducers/locationUserReducer"
 
-const rootReducer = (state : rootReducerInitialState , action : rootReducerType ) => {
-    return {
-        metric: metricReducer( state.metric, action.metric ),
-        locationUser: locationUserReducer( state.location, action.locationUser),
+const rootReducer = (state : rootReducerInitialState , action : rootActionType ) => {
+    switch (action.reducer) {
+        case 'metric': {
+            return {metric: metricReducer( state.metric, action as metricActionType )}
+        }
+        case 'loc': {
+            return {location: locationUserReducer(state.location, action as locationActionType)}
+        }
+        default: {
+            return state
+        }
     }
 }
 

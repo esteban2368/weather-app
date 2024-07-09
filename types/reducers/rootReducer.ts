@@ -11,3 +11,5 @@ export interface  rootReducerInitialState {
     metric: {value: metricType, symbol: string};
     location: locationUserType
 }
+
+export type rootActionType = metricActionType | locationActionType
