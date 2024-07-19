@@ -3,6 +3,6 @@ import { locationUserType } from "../components/CurrentWeather"
 export interface  locationActionType
     {
         type: "get_location_user";
-        location: locationUserType;
+        location: locationUserType | null;
         reducer: string
     }

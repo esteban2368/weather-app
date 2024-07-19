@@ -12,6 +12,7 @@ const Temperature = ({
     value
 }: props) => {
     const globalState = useRootContext()
+    console.log(globalState)
     const styleVariant = style[variant]
 
     return (

@@ -8,10 +8,16 @@ import { locationActionType } from "@/types/reducers/locationUserReducer"
 const rootReducer = (state : rootReducerInitialState , action : rootActionType ) => {
     switch (action.reducer) {
         case 'metric': {
-            return {metric: metricReducer( state.metric, action as metricActionType )}
+            return {
+                ...state,
+                metric: metricReducer( state.metric, action as metricActionType )
+            }
         }
         case 'loc': {
-            return {location: locationUserReducer(state.location, action as locationActionType)}
+            return {
+                ...state,
+                location: locationUserReducer(state.location, action as locationActionType)
+            }
         }
         default: {
             return state

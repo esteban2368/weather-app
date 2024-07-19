@@ -1,4 +1,4 @@
-export interface locationUserType {
-    lat: number,
-    lon: number
-}
+export type locationUserType = {
+    lat?: number,
+    lon?: number
+} | null

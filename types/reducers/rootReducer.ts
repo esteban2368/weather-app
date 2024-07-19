@@ -4,7 +4,7 @@ import { locationUserType } from "../components/CurrentWeather";
 
 export interface rootReducerType {
     metric: metricActionType,
-    locationUser: locationActionType
+    locationUser: locationActionType | null
 }
 
 export interface  rootReducerInitialState {

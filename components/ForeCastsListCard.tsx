@@ -4,14 +4,17 @@ import Date from "./common/Date"
 import uuid4 from "uuid4"
 import { ImageForeCast } from '@/constant/imageSize'
 import { iconsForeCast } from "@/constant/components/ForeCastListCard"
-import { DEFAULT_LOCATION as location } from "@/constant/services"
-import { dailyForecast } from "@/types/services"
+import { dailyForecast, Forecast } from "@/types/services"
 
 import { forecastDaily } from "@/services"
 
-const ForeCastListCard = async () => {
-    const forecastData = await forecastDaily(location, "daily")
-    const dataForeCast = forecastData?.timelines?.daily
+const ForeCastListCard = async ({
+    dataForecast
+}: {
+  dataForecast: Forecast  
+}) => {
+    
+    const dataForeCast = dataForecast?.timelines?.daily
     return (
         <div className="d-flex justify-c flex-wrap gap-4">
             {dataForeCast?.slice(1, dataForeCast.length).map((daily: dailyForecast) => {
