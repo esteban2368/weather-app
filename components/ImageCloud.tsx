@@ -5,11 +5,16 @@ import Temperature from './common/Temperature'
 import { motion } from 'framer-motion'
 import { variantsPage } from '@/constant/variantsMotion'
 import { WeatherResponse } from '@/types/services'
+import { useRootContext } from '@/providers/RootProvider'
+
+import useSWR from 'swr'
+
 import styles from '@/styles/components/ImageCloud.module.scss'
 
 const ImageCloud = ({info}:
     {info: WeatherResponse
     }) => {
+    const globalState = useRootContext()
     return (
         <>
             <div className="d-flex justify-c items-c p-relative overflow-h padding-t-10 padding-b-10">

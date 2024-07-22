@@ -1,7 +1,7 @@
 import ForeCastListCard from "@/components/ForeCastsListCard"
 import { currentWeather, forecastDaily } from "@/services";
 import CurrentWeather from "@/ui/CurrentWeather"
-import HightlightsToday from "@/ui/hightlightsToday"
+import HightlightsToday from "@/ui/HightlightsToday"
 import Switch from "@/components/Switch"
 
 

@@ -1,16 +1,20 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { locationUserType } from "@/types/components/CurrentWeather"
 
 export const useLocationUser = () => {
     const [location, setLocation] = useState<locationUserType | null>(null)
     const [message, setMessage] = useState<string | null>(null)
 
-    useEffect(() => {
+    const getPosition = useCallback(() => {
         if(!message && !location) {
             navigator.geolocation.getCurrentPosition(succsessLocation, errorLocation )
         }
     }, [])
+    
+    useEffect(() => {
+        getPosition()
+    }, [getPosition])
 
     const succsessLocation = (position: GeolocationPosition) => {
         setLocation({
@@ -25,7 +29,7 @@ export const useLocationUser = () => {
 
     
 
-    return {location, message}
+    return {location, message, getPosition}
 }
 
 

@@ -8,12 +8,14 @@ import styles from "@/styles/HomePage.module.scss"
 
 const ButtonLocation = () => {
     const dispatch = useRootDispatchContext()
-    const {location, message} = useLocationUser()
-    console.log(message)
-
+    const {location, message, getPosition} = useLocationUser()
+    
     useEffect(()=>{
-      handleChangeLocation(location)
-    }, [])
+      if (location) {
+        console.log(location)
+        handleChangeLocation(location)
+      }
+    }, [location])
 
     const handleChangeLocation = (location: locationUserType | null) => {
       dispatch && 
