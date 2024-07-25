@@ -3,24 +3,35 @@ import Image from 'next/image'
 import useWeather from '@/hooks/useWeather'
 import Date from './common/Date'
 import Temperature from './common/Temperature'
+import Skeleton from './common/Skeleton'
 import { motion } from 'framer-motion'
 import { variantsPage } from '@/constant/variantsMotion'
-import { WeatherResponse } from '@/types/services'
+import { DEFAULT_LOCATION } from '@/constant/services'
 import { useRootContext } from '@/providers/RootProvider'
 
 
 import styles from '@/styles/components/ImageCloud.module.scss'
 
-const ImageCloud = ({info}:
-    {info: WeatherResponse
-    }) => {
+const ImageCloud = () => {
     const globalState = useRootContext()
-    const dataWeather = globalState?.location
-    const {responseWeatherData, isLoading, isError} = useWeather(dataWeather)
+    const dataWeather = globalState?.location ?? DEFAULT_LOCATION
+    const {data, isLoading, isError} = useWeather(dataWeather)
 
-    const currentWeatherData = responseWeatherData ?? info
+    if(isError) return <div>Error</div>
+    if(isLoading) return (
+        <div>
+            <Skeleton 
+                width="97%" 
+                height={750}
+                classStyle="rounded-lg margin-auto margin-b-4 margin-t-4"
+            />
+        </div>
+    )
+
+    const weatherResponse = data!
+
     return (
-        <>
+        <>  
             <div className="d-flex justify-c items-c p-relative overflow-h padding-t-10 padding-b-10">
                 <motion.div
                     initial={{y: 100, opacity:0}}
@@ -29,7 +40,7 @@ const ImageCloud = ({info}:
                     <Image
                         className="z-10"
                         alt="Shower"
-                        src={`${currentWeatherData.weather[0]?.icon}.svg`}
+                        src={`${weatherResponse?.weather[0]?.icon}.svg`}
                         width={200}
                         height={200}
 
@@ -72,19 +83,19 @@ const ImageCloud = ({info}:
             </div>
             <div className="text-center">
             <div className="color-lila margin-b-6">
-                <Temperature value={currentWeatherData.main?.temp}/>
+                <Temperature value={weatherResponse?.main?.temp}/>
             </div>
-            <span className="d-block heading-5 color-gray-light fw-semimed margin-b-8">{currentWeatherData.weather[0]?.main}</span>
+            <span className="d-block heading-5 color-gray-light fw-semimed margin-b-8">{weatherResponse.weather[0]?.main}</span>
             <div className="color-gray heading-4 margin-b-7">
                 Today 
                 <span className="padding-l-5 padding-r-5">•</span> 
-                <Date time={currentWeatherData.dt}/>
+                <Date time={weatherResponse.dt}/>
             </div>
             <div className="d-flex justify-c items-c fw-semimed color-gray gap-1">
                 <span className="material-symbols-outlined md-2 fill">
                     location_on
                 </span>
-                {currentWeatherData.name}, {currentWeatherData.sys?.country }
+                {weatherResponse.name}, {weatherResponse.sys?.country }
             </div>
             </div>
         </>

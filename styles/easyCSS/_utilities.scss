@@ -134,6 +134,21 @@ $utilities : (
             "8": $base-padding * 4
         )
     ),
+    "margin-top": (
+        "prefix": "margin-t",
+        "values": (
+            "auto": auto,
+            "0": 0,
+            "1": math.div($base-padding, 4),
+            "2": math.div($base-padding, 3),
+            "3": math.div($base-padding, 2),
+            "4": $base-padding,
+            "5": $base-padding + math.div($base-padding, 2),
+            "6": $base-padding * 2,
+            "7": $base-padding * 3,
+            "8": $base-padding * 4
+        )
+    ),
     "border-radius": (
         "prefix": "rounded",
         "values": (

@@ -12,20 +12,19 @@ import styles from "@/styles/HomePage.module.scss"
 
 export default async function Home() {
 
-  const responseCurrentWeather = currentWeather(location)
-  const responseForecastData = forecastDaily(location, "daily")
+  {/*const responseForecastData = forecastDaily(location, "daily")
 
-  const [currentWeatherData, forecastData ] = await Promise.all([responseCurrentWeather, responseForecastData ])
+  const forecastData = await responseForecastData*/}
   return (
     <main className={`${styles.main} container`}>
         <div className="row">
           <section className="column-12 bg-secundary">
-            <CurrentWeather dataWeather={currentWeatherData}/>
+            <CurrentWeather/>
           </section>
           <section className="column-12 d-flex flex-col gap-7 padding-6 padding-t-8 padding-b-8">
             <Switch buttons={buttons}/>
-            <ForeCastListCard dataForecast={forecastData}/>
-            <HightlightsToday dataWeather={currentWeatherData}/>
+            {/*<ForeCastListCard dataForecast={forecastData}/>*/}
+            {/*<HightlightsToday dataWeather={currentWeatherData}/>*/}
           </section>  
         </div>
     </main>

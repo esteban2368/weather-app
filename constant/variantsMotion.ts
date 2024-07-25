@@ -73,3 +73,17 @@ export const variantHoverIcon: Variants = {
         x: 0
     }
 }
+
+export const variantSkeleton: Variants = {
+    in: {opacity: 0.3},
+    out: {
+        opacity: [0.3, 0.5, 1, 0.5, 0.3],
+        transition:{
+            ease: "easeInOut",
+            duration: 2,
+            repeat: Infinity,
+            repeatType: "loop",
+            delay: 0.2
+        }
+    }
+}

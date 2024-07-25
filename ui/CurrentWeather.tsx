@@ -6,11 +6,7 @@ import { WeatherResponse } from "@/types/services"
 
 import styles from "@/styles/HomePage.module.scss"
 
-const CurrentWeather = async ({
-  dataWeather
-}:{
-  dataWeather: WeatherResponse
-}) =>{
+const CurrentWeather = () =>{
     
     return (
        <>
@@ -24,7 +20,7 @@ const CurrentWeather = async ({
                 <ButtonLocation/>
               </div>
             </div>
-            <ImageCloud info={dataWeather}/>
+            <ImageCloud/>
        </> 
     )
 }
