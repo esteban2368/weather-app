@@ -1,3 +1,4 @@
+"use client"
 import ProgressBar from "@/components/ProgressBar"
 import Skeleton from "@/components/common/Skeleton"
 import WindDegree from "@/ui/WindDegree"
@@ -15,11 +16,16 @@ const HightlightsToday = () => {
 
     if(isError) return <div>Eroor</div>
     if (isLoading) return (
-        <Skeleton
-            width="97%"
-            height={300}
-            classStyle=""
-        />
+        <div className="d-flex flex-col gap-5">
+            {Array.from({length: 4}, (_ , index) =>
+                <Skeleton
+                    key={index}
+                    width="100%"
+                    height={151}
+                    classStyle="rounded-lg"
+                />
+            )}
+        </div>
     )
 
     const weatherResponse = data!

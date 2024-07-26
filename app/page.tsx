@@ -23,8 +23,8 @@ export default async function Home() {
           </section>
           <section className="column-12 d-flex flex-col gap-7 padding-6 padding-t-8 padding-b-8">
             <Switch buttons={buttons}/>
-            {/*<ForeCastListCard dataForecast={forecastData}/>*/}
-            {/*<HightlightsToday dataWeather={currentWeatherData}/>*/}
+            <ForeCastListCard/>
+            <HightlightsToday/>
           </section>  
         </div>
     </main>

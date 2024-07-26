@@ -1,20 +1,26 @@
+"use client"
 import Image from "next/image"
 import Temperature from "./common/Temperature"
-import Date from "./common/Date"
 import uuid4 from "uuid4"
+import Date from "./common/Date"
+import { useRootContext } from "@/providers/RootProvider"
+import useForecast from "@/hooks/useForecast"
+import { DEFAULT_LOCATION } from "@/constant/services"
 import { ImageForeCast } from '@/constant/imageSize'
 import { iconsForeCast } from "@/constant/components/ForeCastListCard"
 import { dailyForecast, Forecast } from "@/types/services"
 
-import { forecastDaily } from "@/services"
+const ForeCastListCard = () => {
+    const globalState = useRootContext()
+    const positionUser = globalState?.location ?? DEFAULT_LOCATION
+    const {data, isLoading, isError} = useForecast(positionUser, "daily")
 
-const ForeCastListCard = async ({
-    dataForecast
-}: {
-  dataForecast: Forecast  
-}) => {
-    
-    const dataForeCast = dataForecast?.timelines?.daily
+    if(isError) return <div>Error</div>
+    if(isLoading) return (
+        <div>Loading...</div>
+    )
+
+    const dataForeCast = data?.timelines?.daily
     return (
         <div className="d-flex justify-c flex-wrap gap-4">
             {dataForeCast?.slice(1, dataForeCast.length).map((daily: dailyForecast) => {
