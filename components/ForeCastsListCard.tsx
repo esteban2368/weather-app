@@ -3,6 +3,7 @@ import Image from "next/image"
 import Temperature from "./common/Temperature"
 import uuid4 from "uuid4"
 import Date from "./common/Date"
+import Skeleton from "./common/Skeleton"
 import { useRootContext } from "@/providers/RootProvider"
 import useForecast from "@/hooks/useForecast"
 import { DEFAULT_LOCATION } from "@/constant/services"
@@ -17,7 +18,16 @@ const ForeCastListCard = () => {
 
     if(isError) return <div>Error</div>
     if(isLoading) return (
-        <div>Loading...</div>
+        <div className="d-flex justify-c flex-wrap gap-4">
+            {Array.from({length:5}, (_, index) =>
+                <Skeleton
+                    key={uuid4()}
+                    width={116}
+                    height={170}
+                    classStyle="round-lg"
+                />
+            )}
+        </div>
     )
 
     const dataForeCast = data?.timelines?.daily
