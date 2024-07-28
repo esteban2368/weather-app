@@ -1,11 +1,19 @@
 'use client';
-import Link from 'next/link';
+import { useRootDispatchContext } from '@/providers/RootDispatchProvider'
 import { motion, useAnimation, AnimationControls } from 'framer-motion';
-import { variantList, variantListItem, variantHoverIcon } from '@/constant/variantsMotion';
-import style from '@/styles/components/ListItemsSearch.module.scss';
+import { variantList, variantListItem, variantHoverIcon } from '@/constant/variantsMotion'
+import { locationUserType } from '@/types/components/CurrentWeather'
 
-const ListItemsSearch = () => {
+import style from '@/styles/components/ListItemsSearch.module.scss'
+import { DEFAULT_LOCATION } from '@/constant/services';
 
+interface props {
+  offVisible?: () => void
+}
+const ListItemsSearch = ({
+  offVisible
+}: props) => {
+  const dispatch = useRootDispatchContext()
   const handleHoverStart = async (iconControls: AnimationControls) => {
     await iconControls.start('hover');
   };
@@ -13,7 +21,15 @@ const ListItemsSearch = () => {
   const handleHoverEnd = async (iconControls: AnimationControls) => {
     await iconControls.start('initial');
   };
-
+  const handleChangeLocation = (location: locationUserType  | null) => {
+    dispatch &&
+      dispatch({
+        type: 'get_location_user',
+        location: location,
+        reducer: 'loc'
+      })
+    if (offVisible) offVisible()
+  }
   return (
     <motion.ul 
       initial="closed"
@@ -31,7 +47,9 @@ const ListItemsSearch = () => {
             onHoverStart={() => handleHoverStart(iconControls)}
             onHoverEnd={() => handleHoverEnd(iconControls)}
           >
-            <Link href="/" className="color-lila d-flex items-c justify-sb">
+            <button role='button' className="color-lila d-flex items-c justify-sb" 
+                    onClick={() => handleChangeLocation(DEFAULT_LOCATION)}
+            >
               {city}
               <motion.span 
                 className="material-symbols-outlined md-1 color-gray"
@@ -41,7 +59,7 @@ const ListItemsSearch = () => {
               >
                 chevron_right
               </motion.span>
-            </Link>
+            </button>
           </motion.li>
         );
       })}

@@ -17,6 +17,7 @@ const ForeCastListCard = () => {
     const {data, isLoading, isError} = useForecast(positionUser, "daily")
 
     if(isError) return <div>Error</div>
+    
     if(isLoading) return (
         <div className="d-flex justify-c flex-wrap gap-4">
             {Array.from({length:5}, (_, index) =>

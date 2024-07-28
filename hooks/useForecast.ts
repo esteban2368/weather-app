@@ -29,7 +29,11 @@ const useForecast = (position: locationUserType, timesteps: string) => {
     const {data, isLoading, error} = useSWR(
         [forecastEndpoint, position, timesteps], 
         ([forecastEndpoint, position, timesteps]) => 
-            fetcher(forecastEndpoint, position, timesteps)
+            fetcher(forecastEndpoint, position, timesteps),
+        {   
+            revalidateOnFocus: false,
+            refreshInterval: 100000
+        }
     )
 
     return {
