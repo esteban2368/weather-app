@@ -2,10 +2,10 @@
 import { useRootDispatchContext } from '@/providers/RootDispatchProvider'
 import { motion, useAnimation, AnimationControls } from 'framer-motion';
 import { variantList, variantListItem, variantHoverIcon } from '@/constant/variantsMotion'
+import { DEFAULT_LOCATION } from '@/constant/services'
 import { locationUserType } from '@/types/components/CurrentWeather'
 
 import style from '@/styles/components/ListItemsSearch.module.scss'
-import { DEFAULT_LOCATION } from '@/constant/services';
 
 interface props {
   offVisible?: () => void
@@ -47,7 +47,7 @@ const ListItemsSearch = ({
             onHoverStart={() => handleHoverStart(iconControls)}
             onHoverEnd={() => handleHoverEnd(iconControls)}
           >
-            <button role='button' className="color-lila d-flex items-c justify-sb" 
+            <button role='button' className="w-full bg-secundary color-lila d-flex items-c justify-sb" 
                     onClick={() => handleChangeLocation(DEFAULT_LOCATION)}
             >
               {city}
