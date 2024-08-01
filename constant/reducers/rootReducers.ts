@@ -1,7 +1,8 @@
 import { DEFAULT_METRIC } from "../components/Switch"
+import { rootReducerInitialState } from "@/types/reducers/rootReducer"
 
-export const initialRootState = {
+export const initialRootState: rootReducerInitialState = {
     metric: DEFAULT_METRIC,
     location: null,
-    modalVisible: true
+    searchedLocations: null
 }

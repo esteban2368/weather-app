@@ -1,9 +1,12 @@
 'use client';
 import { useRootDispatchContext } from '@/providers/RootDispatchProvider'
-import { motion, useAnimation, AnimationControls } from 'framer-motion';
+import { useRootContext } from '@/providers/RootProvider'
+import { motion, useAnimation, AnimationControls } from 'framer-motion'
+import uuid4 from 'uuid4'
 import { variantList, variantListItem, variantHoverIcon } from '@/constant/variantsMotion'
 import { DEFAULT_LOCATION } from '@/constant/services'
 import { locationUserType } from '@/types/components/CurrentWeather'
+
 
 import style from '@/styles/components/ListItemsSearch.module.scss'
 
@@ -13,7 +16,10 @@ interface props {
 const ListItemsSearch = ({
   offVisible
 }: props) => {
+  const globalState = useRootContext()
+  const searchedPlaces = globalState?.searchedLocations
   const dispatch = useRootDispatchContext()
+
   const handleHoverStart = async (iconControls: AnimationControls) => {
     await iconControls.start('hover');
   };
@@ -37,20 +43,20 @@ const ListItemsSearch = ({
       variants={variantList}
       className={style.list}
     >
-      {['London', 'Barcelona', 'Bogotá'].map((city, index) => {
+      {searchedPlaces && searchedPlaces?.map((city, index) => {
         const iconControls = useAnimation();
 
         return (
           <motion.li
-            key={index}
+            key={uuid4()}
             variants={variantListItem}
             onHoverStart={() => handleHoverStart(iconControls)}
             onHoverEnd={() => handleHoverEnd(iconControls)}
           >
             <button role='button' className="w-full bg-secundary color-lila d-flex items-c justify-sb" 
-                    onClick={() => handleChangeLocation(DEFAULT_LOCATION)}
+                    onClick={() => handleChangeLocation({lat: city.lat, lon: city.lon})}
             >
-              {city}
+              {`${city.name}, ${city.country}`}
               <motion.span 
                 className="material-symbols-outlined md-1 color-gray"
                 initial="initial"

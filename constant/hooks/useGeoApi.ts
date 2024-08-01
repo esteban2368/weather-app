@@ -1,0 +1,1 @@
+export const LIMIT_PLACES = 4

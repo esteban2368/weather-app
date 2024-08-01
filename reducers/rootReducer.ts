@@ -1,11 +1,12 @@
 import metricReducer from "./metricReducer"
 import locationUserReducer from "./locationUserReducer"
-import modalVisibleReducer from "./modalVisibleReducer"
+import searchedLocationsReducer from "./searchedLocationsReducer"
 
 import { rootReducerType, rootReducerInitialState, rootActionType } from "@/types/reducers/rootReducer"
 import { metricActionType } from "@/types/reducers/metricReducer"
 import { locationActionType } from "@/types/reducers/locationUserReducer"
-import { modalVisbleActionType } from "@/types/reducers/modalVisibleReducer"
+import { searchedLocationsActionType } from "@/types/reducers/searchedLocationsReducer"
+import { geoApiResponseType } from "@/types/hooks"
 
 const rootReducer = (state : rootReducerInitialState , action : rootActionType ) => {
     switch (action.reducer) {
@@ -21,10 +22,10 @@ const rootReducer = (state : rootReducerInitialState , action : rootActionType )
                 location: locationUserReducer(state.location, action as locationActionType)
             }
         }
-        case 'visible': {
+        case 'se_loc': {
             return {
                 ...state,
-                modalVisible: modalVisibleReducer(state.modalVisible, action as modalVisbleActionType)
+                searchedLocations: searchedLocationsReducer(state.searchedLocations, action as searchedLocationsActionType)
             }
         }
         default: {
