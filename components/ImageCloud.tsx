@@ -32,7 +32,7 @@ const ImageCloud = () => {
 
     return (
         <>  
-            <div className="d-flex justify-c items-c p-relative overflow-h padding-t-10 padding-b-10">
+            <div className="d-flex justify-c items-c p-relative overflow-h padding-t-8 padding-t-md-10 padding-b-8 padding-b-md-10">
                 <motion.div
                     initial={{y: 100, opacity:0}}
                     animate={variantsPage.visible}
@@ -82,7 +82,7 @@ const ImageCloud = () => {
                 </div>
             </div>
             <div className="text-center">
-            <div className="color-lila margin-b-8">
+            <div className="color-lila margin-b-6 margin-b-md-8">
                 <Temperature value={weatherResponse?.main?.temp}/>
             </div>
             <span className="d-block heading-5 color-gray-light fw-semimed margin-b-8">{weatherResponse.weather[0]?.main}</span>

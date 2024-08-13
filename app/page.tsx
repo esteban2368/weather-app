@@ -18,7 +18,7 @@ export default async function Home() {
   return (
     <main className={`${styles.main} container`}>
         <div className="row">
-          <section className="column-12 column-md-4 bg-secundary h-auto h-lg-screen">
+          <section className="column-12 column-md-4 bg-secundary h-screen">
             <CurrentWeather/>
           </section>
           <section className="column-12 column-md-8">

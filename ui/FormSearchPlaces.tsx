@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { useEffect, useState } from "react"
 import useGeoApi from "@/hooks/useGeoApi"
 import { useRootDispatchContext } from "@/providers/RootDispatchProvider"
@@ -8,6 +9,7 @@ import { InputType } from "@/types/components/FormSearchPlaces"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, SubmitHandler } from "react-hook-form"
+import { ErrorMessage } from "@hookform/error-message"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
 
@@ -27,7 +29,7 @@ const FormSearchPlaces = () => {
             list: dataGeoApi!,
             reducer: 'se_loc'
         })
-    }, [isLoading])
+    }, [isLoading, searchPlaces])
 
     const {
         register,
@@ -59,26 +61,43 @@ const FormSearchPlaces = () => {
 
     console.log("fetch", shouldFetch)
     return (
-        <form className="row" onSubmit={handleSubmit(onSubmit)}>
-            <div className="column-9">
-                <div className={`${StyleSearchPlaces.inputSearch} h-full padding-4 d-flex items-c gap-2`}>
-                    <span className="material-symbols-outlined md-2 ">
-                        search
-                    </span>
-                    <input 
-                        {...register("searchPlaces")}
-                        type='text' 
-                        className={`w-full h-full bg-secundary`}
-                        placeholder="search location"
+        <div>
+            <form className="row" onSubmit={handleSubmit(onSubmit)}>
+                <div className="column-9">
+                    <div className={`${StyleSearchPlaces.inputSearch} h-full padding-4 d-flex items-c gap-2`}>
+                        <span className="material-symbols-outlined md-2 ">
+                            search
+                        </span>
+                        <input 
+                            {...register("searchPlaces")}
+                            type='text' 
+                            className={`w-full h-full bg-secundary`}
+                            placeholder="search location"
+                        />
+                    </div>
+                </div>
+                <div className="column-3 d-flex justify-e">
+                    <button type="submit" className={`${StyleSearchPlaces.button} button button-purple h-full`} disabled={isLoading}>
+                        {isLoading ? <Image alt='preloader' priority fill src="bouncing-circles.svg"/> : 'Search'}
+                    </button>
+                </div>
+            </form>
+            <div className="row margin-t-4">
+                <div className="column-12">
+                    <ErrorMessage
+                        errors={errors}
+                        name="searchPlaces"
+                        render={({ message }) => 
+                            <p className="color-warning d-flex items-c gap-1">
+                                <span className="material-symbols-outlined md-1">
+                                    error
+                                </span>
+                                {message}
+                            </p>}
                     />
                 </div>
             </div>
-            <div className="column-3 d-flex justify-e">
-                <button type="submit" className="button button-purple h-full" disabled={isLoading}>
-                    {isLoading ? 'Searching...' : 'Search'}
-                </button>
-            </div>
-        </form>
+        </div>
     )
 }
 

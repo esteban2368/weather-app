@@ -83,6 +83,7 @@ $utilities : (
         "values": (
             "auto": auto,
             "0": 0,
+            "-1": $base-padding-negative,
             "1": math.div($base-padding, 4),
             "2": math.div($base-padding, 3),
             "3": math.div($base-padding, 2),
@@ -96,6 +97,7 @@ $utilities : (
         "prefix": "margin-l",
         "values": (
             "auto": auto,
+            "-1": $base-padding-negative,
             "0": 0,
             "1": math.div($base-padding, 4),
             "2": math.div($base-padding, 3),
@@ -110,6 +112,7 @@ $utilities : (
         "prefix": "margin-r",
         "values": (
             "auto": auto,
+            "-1": $base-padding-negative,
             "0": 0,
             "1": math.div($base-padding, 4),
             "2": math.div($base-padding, 3),
@@ -125,6 +128,7 @@ $utilities : (
         "prefix": "margin-b",
         "values": (
             "auto": auto,
+            "-1": $base-padding-negative,
             "0": 0,
             "1": math.div($base-padding, 4),
             "2": math.div($base-padding, 3),
@@ -140,6 +144,7 @@ $utilities : (
         "prefix": "margin-t",
         "values": (
             "auto": auto,
+            "-1": $base-padding-negative,
             "0": 0,
             "1": math.div($base-padding, 4),
             "2": math.div($base-padding, 3),

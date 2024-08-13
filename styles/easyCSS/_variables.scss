@@ -1,11 +1,12 @@
 //Active important intance
-$activeImp: true;
+$activeImp: false;
 
 //main colors
 $black: #000000;
 $white: #ffffff;
 $primary:#100E1D;
 $secundary: #1E213A;
+$red: #D91240;
 $purple: #3C47E9;
 $yellow: #FFEC65;
 $gray: #6E707A;
@@ -18,6 +19,7 @@ $colors: (
     'white': $white,
     'primary': $primary,
     'secundary': $secundary,
+    'warning': $red,
     'purple': $purple,
     'grayish-purple': $grayish-purple,
     'yellow': $yellow,
@@ -48,6 +50,8 @@ $rounded : (
 
 $base-padding: .75rem;
 $base-margin: .75rem;
+
+$base-padding-negative: -1rem;
 
 
 // font sizes

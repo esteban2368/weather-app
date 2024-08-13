@@ -32,9 +32,9 @@ const HightlightsToday = () => {
 
     return (
         <div className="d-flex flex-col gap-2">
-            <h2 className="color-lila">Today's Hightlights</h2>
+            <h2 className="color-lila margin-l-7 margin-l-md-0 margin-r-7 margin-r-md-0">Today's Hightlights</h2>
             <div>
-                <div className="row margin-l-0 margin-r-0 gap-c-2">
+                <div className="row margin-l-0 margin-l-md--1 margin-r-0 margin-r-md--1 gap-c-2">
                     <div className="column-12 column-md-6">
                         <div className="bg-secundary color-lila padding-6 d-flex flex-col items-c justify-c gap-2">
                             <h3 className="heading-base fw-med">Wind status</h3>
@@ -61,7 +61,7 @@ const HightlightsToday = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row margin-l-0 margin-r-0 gap-c-2">
+                <div className="row margin-l-0 margin-l-md--1 margin-r-0 margin-r-md--1 gap-c-2">
                     <div className="column-12 column-md-6">
                         <div className="bg-secundary color-lila padding-6 d-flex flex-col items-c justify-c gap-2">
                             <h3 className="heading-base fw-med">Visivility</h3>

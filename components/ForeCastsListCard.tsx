@@ -33,7 +33,7 @@ const ForeCastListCard = () => {
 
     const dataForeCast = data?.timelines?.daily
     return (
-        <div className="d-flex justify-c flex-wrap gap-4">
+        <div className="d-flex justify-c justify-md-s flex-wrap gap-4">
             {dataForeCast?.slice(1, dataForeCast.length).map((daily: dailyForecast) => {
                 return <div className="bg-secundary padding-5 color-lila d-flex flex-col items-c" key={uuid4()}>
                     <h3 className="heading-base fw-med">
