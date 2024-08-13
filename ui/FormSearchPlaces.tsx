@@ -23,7 +23,6 @@ const FormSearchPlaces = () => {
     const {isLoading, dataGeoApi, isError  } = useGeoApi(searchPlaces, shouldFetch)
 
     useEffect(()=> {
-        console.log("loading", isLoading)
         if(!isLoading) distpatch && distpatch({
             type: 'change_searched_locations',
             list: dataGeoApi!,

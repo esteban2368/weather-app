@@ -13,7 +13,7 @@ interface props {
 
 const Providers = ({children}: props) => {
     const [state, dispatch] =  useReducer(rootReducer, initialRootState)
-    console.log(state)
+    //console.log(state)
 
     return (
         <RootProvider metric={state}>

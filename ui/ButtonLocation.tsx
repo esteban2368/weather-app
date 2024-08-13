@@ -12,7 +12,6 @@ const ButtonLocation = () => {
     
     useEffect(()=>{
       if (location) {
-        console.log(location)
         handleChangeLocation(location)
       }
     }, [location])

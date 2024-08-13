@@ -8,7 +8,6 @@ interface props {
 const WindDegree = ({
     degree
 }: props) => {
-    console.log(degree)
     return (
         <motion.span 
             className={`${style.shape} d-flex items-c justify-c rounded-full bg-gray`}
