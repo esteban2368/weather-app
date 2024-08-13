@@ -31,46 +31,60 @@ const HightlightsToday = () => {
     const weatherResponse = data!
 
     return (
-        <div className="d-flex flex-col gap-5">
+        <div className="d-flex flex-col gap-2">
             <h2 className="color-lila">Today's Hightlights</h2>
-            <div className="bg-secundary color-lila padding-6 d-flex flex-col items-c justify-c gap-2">
-            <h3 className="heading-base fw-med">Wind status</h3>
             <div>
-                <span className="heading-6 fw-bold margin-r-2">{Math.round(weatherResponse.wind.speed)}</span>
-                <span className="heading-5 fw-med">mph</span>
-            </div>
-            <div className="d-flex items-c gap-2">
-                <WindDegree degree={weatherResponse.wind.deg}/>
-                <span className="heading-3">WSW</span>
-            </div>
-            </div>
-            <div className="bg-secundary color-lila padding-6 d-flex flex-col items-c justify-c gap-2">
-            <h3 className="heading-base fw-med">Humidity</h3>
-            <div>
-                <span className="heading-6 fw-bold margin-r-2">{weatherResponse.main.humidity}</span>
-                <span className="heading-5 fw-med">%</span>
-            </div>
-            <div className="d-flex items-c gap-2 w-full">
-                <ProgressBar value={weatherResponse.main.humidity}/>
-            </div>
-            </div>
-            <div className="bg-secundary color-lila padding-6 d-flex flex-col items-c justify-c gap-2">
-            <h3 className="heading-base fw-med">Visivility</h3>
-            <div>
-                <span className="heading-6 fw-bold margin-r-4">
-                {financial(weatherResponse.visibility / 1609, 1)}
-                </span>
-                <span className="heading-5 fw-med">miles</span>
-            </div>
-            </div>
-            <div className="bg-secundary color-lila padding-6 d-flex flex-col items-c justify-c gap-2">
-            <h3 className="heading-base fw-med">Air Pressure</h3>
-            <div>
-                <span className="heading-6 fw-bold margin-r-4">
-                {financial(weatherResponse.main.pressure / 100, 1)}
-                </span>
-                <span className="heading-5 fw-med">mb</span>
-            </div>
+                <div className="row margin-l-0 margin-r-0 gap-c-2">
+                    <div className="column-12 column-md-6">
+                        <div className="bg-secundary color-lila padding-6 d-flex flex-col items-c justify-c gap-2">
+                            <h3 className="heading-base fw-med">Wind status</h3>
+                            <div>
+                                <span className="heading-6 fw-bold margin-r-2">{Math.round(weatherResponse.wind.speed)}</span>
+                                <span className="heading-5 fw-med">mph</span>
+                            </div>
+                            <div className="d-flex items-c gap-2">
+                                <WindDegree degree={weatherResponse.wind.deg}/>
+                                <span className="heading-3">WSW</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="column-12 column-md-6">
+                        <div className="bg-secundary color-lila padding-6 d-flex flex-col items-c justify-c gap-2">
+                            <h3 className="heading-base fw-med">Humidity</h3>
+                            <div>
+                                <span className="heading-6 fw-bold margin-r-2">{weatherResponse.main.humidity}</span>
+                                <span className="heading-5 fw-med">%</span>
+                            </div>
+                            <div className="d-flex items-c gap-2 w-full">
+                                <ProgressBar value={weatherResponse.main.humidity}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row margin-l-0 margin-r-0 gap-c-2">
+                    <div className="column-12 column-md-6">
+                        <div className="bg-secundary color-lila padding-6 d-flex flex-col items-c justify-c gap-2">
+                            <h3 className="heading-base fw-med">Visivility</h3>
+                            <div>
+                                <span className="heading-6 fw-bold margin-r-4">
+                                {financial(weatherResponse.visibility / 1609, 1)}
+                                </span>
+                                <span className="heading-5 fw-med">miles</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="column-12 column-md-6">
+                        <div className="bg-secundary color-lila padding-6 d-flex flex-col items-c justify-c gap-2">
+                            <h3 className="heading-base fw-med">Air Pressure</h3>
+                            <div>
+                                <span className="heading-6 fw-bold margin-r-4">
+                                {financial(weatherResponse.main.pressure / 100, 1)}
+                                </span>
+                                <span className="heading-5 fw-med">mb</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
       </div>
     )

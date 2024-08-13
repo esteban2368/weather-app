@@ -82,7 +82,7 @@ const ImageCloud = () => {
                 </div>
             </div>
             <div className="text-center">
-            <div className="color-lila margin-b-6">
+            <div className="color-lila margin-b-8">
                 <Temperature value={weatherResponse?.main?.temp}/>
             </div>
             <span className="d-block heading-5 color-gray-light fw-semimed margin-b-8">{weatherResponse.weather[0]?.main}</span>

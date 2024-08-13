@@ -10,7 +10,7 @@ const CurrentWeather = () =>{
     
     return (
        <>
-        <div className="row padding-l-4 padding-r-4 padding-t-5">
+        <div className="row padding-l-8 padding-r-8 padding-t-7">
               <div className="column-10">
                 <Link href="/search-places" scroll={false} className="button button-gray d-inline-b">
                   Search for places

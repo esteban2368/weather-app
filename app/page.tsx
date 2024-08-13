@@ -18,13 +18,15 @@ export default async function Home() {
   return (
     <main className={`${styles.main} container`}>
         <div className="row">
-          <section className="column-12 bg-secundary">
+          <section className="column-12 column-md-4 bg-secundary h-auto h-lg-screen">
             <CurrentWeather/>
           </section>
-          <section className="column-12 d-flex flex-col gap-7 padding-6 padding-t-8 padding-b-8">
-            <Switch buttons={buttons}/>
-            <ForeCastListCard/>
-            <HightlightsToday/>
+          <section className="column-12 column-md-8">
+            <div className="container container--content d-flex flex-col gap-10 padding-md-6 padding-t-7 padding-b-6">
+              <Switch buttons={buttons}/>
+              <ForeCastListCard/>
+              <HightlightsToday/>
+            </div>
           </section>  
         </div>
     </main>

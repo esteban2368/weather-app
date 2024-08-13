@@ -26,9 +26,10 @@ $utilities : (
             "2": math.div($base-padding, 3),
             "3": math.div($base-padding, 2),
             "4": $base-padding,
-            "5": $base-padding + math.div($base-padding, 4),
-            "6": $base-padding + math.div($base-padding, 3),
-            "7": $base-padding + math.div($base-padding, 2),
+            "5": $base-padding + math.div($base-padding, 2),
+            "6": $base-padding * 2,
+            "7": $base-padding * 3,
+            "8": $base-padding * 4
         )
     ),
     "padding-right": (
@@ -39,9 +40,10 @@ $utilities : (
             "2": math.div($base-padding, 3),
             "3": math.div($base-padding, 2),
             "4": $base-padding,
-            "5": $base-padding + math.div($base-padding, 4),
-            "6": $base-padding + math.div($base-padding, 3),
-            "7": $base-padding + math.div($base-padding, 2),
+            "5": $base-padding + math.div($base-padding, 2),
+            "6": $base-padding * 2,
+            "7": $base-padding * 3,
+            "8": $base-padding * 4
         )
     ),
     "padding-bottom": (
@@ -191,6 +193,7 @@ $utilities : (
             "50": math.div(100%, 2),
             "30": math.div(100%, 3),
             "screen": 100vw,
+            "auto": auto
         )
     ),
     "height": (
@@ -200,6 +203,7 @@ $utilities : (
             "50": math.div(100%, 2),
             "30": math.div(100%, 3),
             "screen": 100vh,
+            "auto": auto
         )
     ),
     "z-index": (
@@ -250,27 +254,113 @@ $utilities : (
     )
 );
 
-@each $property, $map in $utilities {
-    $prefix: map-get($map, "prefix" );
-    $values: map-get($map, "values");
-
-    @each $key, $value in $values {
-        @if ($key == "default") {
-            .#{$prefix}{
+@include xs {
+    @each $property, $map in $utilities {
+        $prefix: map-get($map, "prefix" );
+        $values: map-get($map, "values");
+    
+        @each $key, $value in $values {
+            @if ($key == "default") {
+                .#{$prefix}{
+                    @if $activeImp{
+                        #{$property}: $value !important
+                    }@else {
+                        #{$property}: $value;
+                    }
+                }
+            }@else {
                 @if $activeImp{
-                    #{$property}: $value !important
-                }@else {
-                    #{$property}: $value;
+                    .#{$prefix}-#{$key} {
+                        #{$property}: $value !important
+                    }
+                }@else{
+                    .#{$prefix}-#{$key} {
+                        #{$property}: $value
+                    }
                 }
             }
-        }@else {
-            @if $activeImp{
-                .#{$prefix}-#{$key} {
-                    #{$property}: $value !important
+        }
+    }
+}
+@include sm {
+    @each $property, $map in $utilities {
+        $prefix: map-get($map, "prefix" );
+        $values: map-get($map, "values");
+    
+        @each $key, $value in $values {
+            @if ($key == "default") {
+                .#{$prefix}-sm {
+                    @if $activeImp{
+                        #{$property}: $value !important
+                    }@else {
+                        #{$property}: $value;
+                    }
                 }
-            }@else{
-                .#{$prefix}-#{$key} {
-                    #{$property}: $value
+            }@else {
+                @if $activeImp{
+                    .#{$prefix}-sm-#{$key} {
+                        #{$property}: $value !important
+                    }
+                }@else{
+                    .#{$prefix}-sm-#{$key} {
+                        #{$property}: $value
+                    }
+                }
+            }
+        }
+    }
+}
+@include md {
+    @each $property, $map in $utilities {
+        $prefix: map-get($map, "prefix" );
+        $values: map-get($map, "values");
+    
+        @each $key, $value in $values {
+            @if ($key == "default") {
+                .#{$prefix}-md {
+                    @if $activeImp{
+                        #{$property}: $value !important
+                    }@else {
+                        #{$property}: $value;
+                    }
+                }
+            }@else {
+                @if $activeImp{
+                    .#{$prefix}-md-#{$key} {
+                        #{$property}: $value !important
+                    }
+                }@else{
+                    .#{$prefix}-md-#{$key} {
+                        #{$property}: $value
+                    }
+                }
+            }
+        }
+    }
+}
+@include lg {
+    @each $property, $map in $utilities {
+        $prefix: map-get($map, "prefix" );
+        $values: map-get($map, "values");
+    
+        @each $key, $value in $values {
+            @if ($key == "default") {
+                .#{$prefix}-lg {
+                    @if $activeImp{
+                        #{$property}: $value !important
+                    }@else {
+                        #{$property}: $value;
+                    }
+                }
+            }@else {
+                @if $activeImp{
+                    .#{$prefix}-lg-#{$key} {
+                        #{$property}: $value !important
+                    }
+                }@else{
+                    .#{$prefix}-lg-#{$key} {
+                        #{$property}: $value
+                    }
                 }
             }
         }

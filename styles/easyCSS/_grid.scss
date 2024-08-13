@@ -6,8 +6,10 @@
     max-width: $container-width;
     margin: auto;
     box-sizing: border-box;
+    .container--content{
+        max-width: $container-width-content;
+    }
 }
-
 //row
 .row {
     display: flex;
@@ -27,13 +29,17 @@ $gaps: (
     "5": 1.75rem,
     "6": 2rem,
     "7": 2.5rem,
+    "8": 2.75rem,
+    "9": 3rem,
+    "10": 3.75rem,
 );
 
+// gap for flex elements
 @each $gap, $value in $gaps {
     .gap-#{$gap} {
         gap: $value
     }
-} 
+}
 
 //classes columns
 
@@ -47,6 +53,16 @@ $template-columns-grid : 12;
             width: math.div($col * 100%, $template-columns-grid);
         }
     }
+    // gap for columns
+    @each $gap, $value in $gaps {
+        .gap-c-#{$gap} > * {
+            padding: $value
+        }
+        .gap-c-#{$gap} {
+            margin-left: -$value;
+            margin-right: -$value;
+        }
+    } 
 }
 @include sm {
     @for $col from 1 through $template-columns-grid {
@@ -56,6 +72,16 @@ $template-columns-grid : 12;
             width: math.div($col * 100%, $template-columns-grid);
         }
     }
+    // gap for columns
+    @each $gap, $value in $gaps {
+        .gap-c-sm-#{$gap} > * {
+            padding: $value
+        }
+        .gap-c-sm-#{$gap} {
+            margin-left: -$value;
+            margin-right: -$value;
+        }
+    } 
 }
 @include md {
     @for $col from 1 through $template-columns-grid {
@@ -65,6 +91,16 @@ $template-columns-grid : 12;
             width: math.div($col * 100%, $template-columns-grid);
         }
     }
+    // gap for columns
+    @each $gap, $value in $gaps {
+        .gap-c-md-#{$gap} > * {
+            padding: $value
+        }
+        .gap-c-md-#{$gap} {
+            margin-left: -$value;
+            margin-right: -$value;
+        }
+    } 
 }
 @include lg {
     @for $col from 1 through $template-columns-grid {
@@ -74,6 +110,16 @@ $template-columns-grid : 12;
             width: math.div($col * 100%, $template-columns-grid);
         }
     }
+    // gap for columns
+    @each $gap, $value in $gaps {
+        .gap-c-lg-#{$gap} > * {
+            padding: $value
+        }
+        .gap-c-lg-#{$gap} {
+            margin-left: -$value;
+            margin-right: -$value;
+        }
+    } 
 }
 @include xl {
     @for $col from 1 through $template-columns-grid {
@@ -83,4 +129,14 @@ $template-columns-grid : 12;
             width: math.div($col * 100%, $template-columns-grid);
         }
     }
+    // gap for columns
+    @each $gap, $value in $gaps {
+        .gap-c-xl-#{$gap} > * {
+            padding: $value
+        }
+        .gap-c-xl-#{$gap} {
+            margin-left: -$value;
+            margin-right: -$value;
+        }
+    } 
 }
