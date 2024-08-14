@@ -9,6 +9,7 @@ import { locationUserType } from '@/types/components/CurrentWeather'
 
 
 import style from '@/styles/components/ListItemsSearch.module.scss'
+import { useEffect } from 'react';
 
 interface props {
   offVisible?: () => void
@@ -19,13 +20,13 @@ const ListItemsSearch = ({
   const globalState = useRootContext()
   const searchedPlaces = globalState?.searchedLocations
   const dispatch = useRootDispatchContext()
-
+  
   const handleHoverStart = async (iconControls: AnimationControls) => {
     await iconControls.start('hover');
   };
-
+  
   const handleHoverEnd = async (iconControls: AnimationControls) => {
-    await iconControls.start('initial');
+    await iconControls.start('initial')
   };
   const handleChangeLocation = (location: locationUserType  | null) => {
     dispatch &&
@@ -34,17 +35,17 @@ const ListItemsSearch = ({
         location: location,
         reducer: 'loc'
       })
-    if (offVisible) offVisible()
-  }
+      if (offVisible) offVisible()
+    }
   return (
     <motion.ul 
-      initial="closed"
-      animate="open"
-      variants={variantList}
-      className={style.list}
+    initial="closed"
+    animate="open"
+    variants={variantList}
+    className={style.list}
     >
       {searchedPlaces && searchedPlaces?.map((city, index) => {
-        const iconControls = useAnimation();
+      const iconControls = useAnimation()
 
         return (
           <motion.li

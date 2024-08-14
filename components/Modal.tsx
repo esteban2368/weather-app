@@ -23,10 +23,11 @@ const Modal = ({
     const refModal = useRef<ElementRef<'dialog'>>(null)
 
     useEffect(() =>{
-        if(!refModal.current?.open){
+        const modal = refModal.current
+        if(!modal?.open){
             refModal.current?.showModal()
         }
-        return () => refModal.current?.close()
+        return () => modal?.close()
     }, [])
 
     const handleFinishAnimation = () => {
